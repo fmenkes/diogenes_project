@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+        {% block body_block %}
+        <div class="col-md-24">
+          <table id="diogenes-table" class="table table-striped">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Year</th>
+                <th>Publisher</th>
+                <th>ISBN</th>
+                <th>Genre</th>
+                <th>Added By</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for book in books %}
+            <tr>
+                <td>{{ book.title }}</td>
+                <td>{{ book.author }}</td>
+                <td>{{ book.year }}</td>
+                <td>{{ book.publisher }}</td>
+                <td>{{ book.ISBN }}</td>
+                <td>{{ book.genre }}</td>
+                <td>{{ book.user.username }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        {% endblock %}

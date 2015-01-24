@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+        {% load static %}
+
+        {% block body_block %}
+
+        {% if user.is_authenticated %}
+
+        <div class="col-md-24">
+          <table id="diogenes-table" class="table table-striped">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Year</th>
+                <th>Publisher</th>
+                <th>ISBN</th>
+                <th>Genre</th>
+                <th>Edit</th>
+                <th>Del</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for book in books %}
+            <tr id="diogenes_row_{{ book.id }}">
+                <td>{{ book.title }}</td>
+                <td>{{ book.author }}</td>
+                <td>{{ book.year }}</td>
+                <td>{{ book.publisher }}</td>
+                <td>{{ book.ISBN }}</td>
+                <td>{{ book.genre }}</td>
+                <td><a href="{% url 'edit_book' book.slug %}"><button class="btn btn-xs btn-warning btn-edit">?</button></a></td>
+                <td><button class="btn btn-xs btn-danger btn-delete" data-bookid="{{ book.id }}">X</button></td>
+            </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        {% else %}
+        <div class="page-header"><h1>Diogenes' Library</h1></div>
+        <div><p>Welcome to Diogenes' Library! Please <a href="{% url 'auth_login' %}">login</a> to start building your library or
+        <a href="{% url 'collection' %}">browse the collection</a>.</p></div>
+        {% endif %}
+        {% endblock %}
