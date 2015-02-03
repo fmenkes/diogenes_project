@@ -16,7 +16,7 @@ class Book(models.Model):
     slug = models.SlugField(unique=True)
 
     def save(self, *args, **kwargs):
-        self.author = str(self.first_name) + ' ' + str(self.last_name)
+        self.author = self.first_name + ' ' + self.last_name
         self.slug = slugify(self.title)
         super(Book, self).save(*args, **kwargs)
 
