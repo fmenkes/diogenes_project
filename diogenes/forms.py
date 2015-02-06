@@ -8,7 +8,7 @@ class BookForm(forms.ModelForm):
     first_name = forms.CharField(max_length=128, help_text="Author first name:")
     last_name = forms.CharField(max_length=128, help_text="Author last name:")
     year = forms.IntegerField(required=False, help_text="Year published:")
-    publisher = forms.CharField(max_length=128, help_text="Publisher:")
+    publisher = forms.CharField(max_length=128, required=False, help_text="Publisher:")
     ISBN = forms.CharField(max_length=128, required=False, help_text="ISBN:")
     genre = forms.CharField(max_length=128, required=False, help_text="Genre:")
     slug = forms.SlugField(widget=forms.HiddenInput(), required=False)

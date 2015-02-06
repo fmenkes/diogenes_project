@@ -19,7 +19,11 @@
             <tr>
                 <td>{{ book.title }}</td>
                 <td>{{ book.author }}</td>
+                {% if book.year %}
                 <td>{{ book.year }}</td>
+                {% else %}
+                <td></td>
+                {% endif %}
                 <td>{{ book.publisher }}</td>
                 <td>{{ book.ISBN }}</td>
                 <td>{{ book.genre }}</td>

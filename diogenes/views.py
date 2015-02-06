@@ -62,15 +62,16 @@ def edit_book(request, book_slug):
 
 def index(request):
     if request.user.is_authenticated():
-        book_list = Book.objects.filter(user=request.user)
+        book_list = Book.objects.filter(user=request.user).order_by('clean_title')
     else:
-        book_list = Book.objects.order_by('title')
+        book_list = Book.objects.order_by('clean_title')
     context_dict = {'books': book_list}
 
     return render(request, 'diogenes/index.html', context_dict)
 
+
 def collection(request):
-    book_list = Book.objects.order_by('title')
+    book_list = Book.objects.order_by('clean_title')
     context_dict = {'books': book_list}
 
     return render(request, 'diogenes/collection.html', context_dict)
