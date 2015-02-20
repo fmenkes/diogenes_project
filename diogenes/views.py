@@ -3,10 +3,16 @@ from forms import BookForm
 from models import Book
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 
 def about(request):
     return render(request, 'diogenes/about.html')
+
+
+def sorry(request):
+    return render(request, 'diogenes/sorry.html')
+
 
 @login_required
 def add_book(request):
@@ -41,13 +47,13 @@ def delete_book(request):
     return HttpResponse(book_id)
 
 @login_required
-def edit_book(request, book_slug):
+def edit_book(request, book_id):
+    book = Book.objects.get(id=book_id)
+    if book.user.id != request.user.id:
+        return sorry(request)
     if request.method == 'GET':
-        book = Book.objects.get(slug=book_slug)
         form = BookForm(instance=book)
-
     else:
-        book = Book.objects.get(slug=book_slug)
         form = BookForm(request.POST, instance=book)
 
         if form.is_valid():
@@ -57,7 +63,7 @@ def edit_book(request, book_slug):
         else:
             print form.errors
 
-    return render(request, 'diogenes/edit_book.html', {'form': form, "book_slug": book_slug})
+    return render(request, 'diogenes/edit_book.html', {'form': form, 'book': book})
 
 
 def index(request):
@@ -71,7 +77,8 @@ def index(request):
 
 
 def collection(request):
-    book_list = Book.objects.order_by('clean_title')
+    # Not the best way to do it perhaps, maybe think of something else?
+    book_list = Book.objects.filter(user=User.objects.get_by_natural_key('francis')).order_by('clean_title')
     context_dict = {'books': book_list}
 
     return render(request, 'diogenes/collection.html', context_dict)

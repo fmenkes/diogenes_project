@@ -8,6 +8,7 @@ urlpatterns = patterns('',
         url(r'^about/$', views.about, name='about'),
         url(r'^add_book/$', views.add_book, name='add_book'),
         url(r'^delete_book/$', views.delete_book, name='delete_book'),
-        url(r'^edit_book/(?P<book_slug>[\w\-]+)/$', views.edit_book, name='edit_book'),
+        url(r'^sorry/$', views.sorry, name='sorry'),
+        url(r'^edit_book/(?P<book_id>[\w\-]+)/$', views.edit_book, name='edit_book'),
         
 )

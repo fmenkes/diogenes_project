@@ -2,7 +2,7 @@
         {% block body_block %}
         <div class="page header"><h1>Edit Book</h1></div>
         <div>
-    <form id="book_form" method="post" action="/diogenes/edit_book/{{ book_slug }}/">
+    <form id="book_form" method="post" action="/diogenes/edit_book/{{ book.id }}/">
         {% csrf_token %}
         {% for hidden in form.hidden_fields %}
             {{ hidden }}

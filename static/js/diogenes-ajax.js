@@ -9,8 +9,3 @@ $(".btn-delete").click(function() {
 
     }
 });
-$(".btn-edit").click(function() {
-    var bookid;
-    bookid = $(this).attr("data-bookid");
-    $.get('/diogenes/edit_book/', {book_id: bookid});
-});

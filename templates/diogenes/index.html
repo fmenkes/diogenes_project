@@ -32,7 +32,7 @@
                 <td>{{ book.publisher }}</td>
                 <td>{{ book.ISBN }}</td>
                 <td>{{ book.genre }}</td>
-                <td><a href="{% url 'edit_book' book.slug %}"><button class="btn btn-xs btn-warning btn-edit">?</button></a></td>
+                <td><a href="{% url 'edit_book' book.id %}"><button class="btn btn-xs btn-warning btn-edit">?</button></a></td>
                 <td><button class="btn btn-xs btn-danger btn-delete" data-bookid="{{ book.id }}">X</button></td>
             </tr>
             {% endfor %}
