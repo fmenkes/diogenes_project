@@ -1,5 +1,5 @@
 # Diogenes' Library
-A simple Django website for keeping track of your books. Registration closed for now, but guests can log in with u/p guest/guest and give it a whirl. Clicking on the Collection tab will show a few books I have added for demonstration purposes.
+A simple Django website for keeping track of your books. Registration closed for now, but guests can log in with u/p guest/guest and give it a whirl. The website is diogenes.pythonanywhere.com/diogenes. Clicking on the Collection tab will show a few books I have added for demonstration purposes.
 
 The collection page is sortable thanks to tablesorter (www.tablesorter.com).
 
