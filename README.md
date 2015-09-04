@@ -8,3 +8,5 @@ Books have six fields: Title, Author, Year published, Publisher, ISBN, Genre
 Users can add books to their collections, edit added books, and delete them from their collections.
 
 Planned additions in the future include: Being able to show/hide fields in the collection table, sharing your collection, and multi-page collection.
+
+Deprecated in favor of https://github.com/fmenkes/diogenes.
